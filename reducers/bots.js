@@ -26,19 +26,9 @@ function handleAction(state, action){
 	if(typeof state === 'undefined') {
 		state = initialState;
 		state.loggedIn = (cookie.load('oauth_token') ? true : false);
-
-        //mock stuff
-        var mockHashtagObjects = mockHashtags.map((name) => {
-           return {
-                name,
-                number: 123
-            };
-        });
-
-
-        state.likeHashtags = mockHashtagObjects.map((item) => item);
-        state.retweetHashtags = mockHashtagObjects.map((item) => item);
-        state.followHashtags = mockHashtagObjects.map((item) => item);
+        state.likeHashtags = [];
+        state.retweetHashtags = [];
+        state.followHashtags = [];
 
     }
 		console.log("REDUCDER RECIEVED ACTION: " + action.type);
