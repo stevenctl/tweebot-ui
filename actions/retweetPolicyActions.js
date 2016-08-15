@@ -1,6 +1,7 @@
 import RequestStatus from './RequestStatus';
 import axios from 'axios';
 import cookie from 'react-cookie';
+import config from 'react-global-configuration';
 
 export const ADD_RETWEET_HASHTAG_REQUEST = 'ADD_RETWEET_HASHTAG_REQUEST', ADD_RETWEET_HASHTAG_SUCCESS = 'ADD_RETWEET_HASHTAG_SUCCESS', ADD_RETWEET_HASHTAG_FAIL = 'ADD_RETWEET_HASHTAG_FAIL';
 export const REMOVE_RETWEET_HASHTAG_REQUEST = 'REMOVE_RETWEET_HASHTAG_REQUEST', REMOVE_RETWEET_HASHTAG_SUCCESS = 'REMOVE_RETWEET_HASHTAG_SUCCESS', REMOVE_RETWEET_HASHTAG_FAIL = 'REMOVE_RETWEET_HASHTAG_FAIL';
@@ -15,7 +16,7 @@ export function addRetweetHashtag(hashtag){
             status: status.copy()
         });
 
-        return axios.post('http://localhost:8080/tweebot/policies/retweet?hashtag=' + hashtag,{},
+        return axios.post('http://' + config.get('API_HOST') + '/tweebot/policies/retweet?hashtag=' + hashtag,{},
             {
                 headers: {
                     'oauth_token' : cookie.load('oauth_token'),
@@ -52,7 +53,7 @@ export function removeRetweetHashtag(policyId){
             status: status.copy()
         });
 
-        return axios.delete('http://localhost:8080/tweebot/policies/retweet',
+        return axios.delete('http://' + config.get('API_HOST') + '/tweebot/policies/retweet',
             {
                 params: {
                     policyId
@@ -92,7 +93,7 @@ export function getRetweetHashtags(){
             status: status.copy()
         });
 
-        return axios.get('http://localhost:8080/tweebot/policies/retweet',
+        return axios.get('http://' + config.get('API_HOST') + '/tweebot/policies/retweet',
             {
                 headers: {
                     'oauth_token' : cookie.load('oauth_token'),

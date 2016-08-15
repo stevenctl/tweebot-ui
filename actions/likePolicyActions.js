@@ -1,6 +1,7 @@
 import RequestStatus from './RequestStatus';
 import axios from 'axios';
 import cookie from 'react-cookie';
+import config from 'react-global-configuration';
 
 export const ADD_LIKE_HASHTAG_REQUEST = 'ADD_LIKE_HASHTAG_REQUEST', ADD_LIKE_HASHTAG_SUCCESS = 'ADD_LIKE_HASHTAG_SUCCESS', ADD_LIKE_HASHTAG_FAIL = 'ADD_LIKE_HASHTAG_FAIL';
 export const REMOVE_LIKE_HASHTAG_REQUEST = 'REMOVE_LIKE_HASHTAG_REQUEST', REMOVE_LIKE_HASHTAG_SUCCESS = 'REMOVE_LIKE_HASHTAG_SUCCESS', REMOVE_LIKE_HASHTAG_FAIL = 'REMOVE_LIKE_HASHTAG_FAIL';
@@ -15,7 +16,7 @@ export function addLikeHashtag(hashtag){
             status: status.copy()
         });
 
-        return axios.post('http://localhost:8080/tweebot/policies/like?hashtag=' + hashtag,{},
+        return axios.post('http://' + config.get('API_HOST') + '/tweebot/policies/like?hashtag=' + hashtag,{},
             {
                 headers: {
                     'oauth_token' : cookie.load('oauth_token'),
@@ -52,7 +53,7 @@ export function removeLikeHashtag(policyId){
             status: status.copy()
         });
 
-        return axios.delete('http://localhost:8080/tweebot/policies/like',
+        return axios.delete('http://' + config.get('API_HOST') + '/tweebot/policies/like',
             {
                 params: {
                     policyId
@@ -92,7 +93,7 @@ export function getLikeHashtags(){
             status: status.copy()
         });
 
-        return axios.get('http://localhost:8080/tweebot/policies/like',
+        return axios.get('http://' + config.get('API_HOST') + '/tweebot/policies/like',
             {
                 headers: {
                     'oauth_token' : cookie.load('oauth_token'),
