@@ -6,7 +6,7 @@ import configureStore from './store/bots';
 import config from 'react-global-configuration';
 
 config.set({
-    API_HOST: "localhost:8080"
+    API_HOST: "tweebot.co:8080"
 });
 
 
