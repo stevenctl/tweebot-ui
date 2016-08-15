@@ -63,7 +63,7 @@ function handleAction(state, action){
 function userInfo(action, state){
     switch(action.type){
         case USER_INFO_SUCCESS:
-            cookie.save('userId', action.userInfo.id_str, { path: '/' });
+            cookie.save('userId', "str" + action.userInfo.id_str , { path: '/' });
             cookie.save('userFullName', action.userInfo.name, { path: '/' });
             cookie.save('userScreenName', action.userInfo.screen_name, { path: '/' });
             cookie.save('userProfilePic', action.userInfo.profile_image_url, {path: '/'});

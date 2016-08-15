@@ -27,7 +27,7 @@ export function getUserInfo() {
                     type: USER_INFO_SUCCESS,
                     status: status.success(),
 					userInfo: {
-								id_str: cookie.load('userId'),
+								id_str: cookie.load('userId').replaceAll('str', ''),
 								name: cookie.load('userFullName'),
 								screen_name: cookie.load('userScreenName'),
                                 profile_image_url: cookie.load('userProfilePic')

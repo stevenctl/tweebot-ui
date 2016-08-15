@@ -20,7 +20,7 @@ export function addLikeHashtag(hashtag){
                 headers: {
                     'oauth_token' : cookie.load('oauth_token'),
                     'oauth_token_secret' : cookie.load('oauth_token_secret'),
-                    'userId': cookie.load('userId')
+                    'userId': cookie.load('userId').replace('str', '')
                 }
             })
             .then(json => {
@@ -60,7 +60,7 @@ export function removeLikeHashtag(policyId){
                 headers: {
                     'oauth_token' : cookie.load('oauth_token'),
                     'oauth_token_secret' : cookie.load('oauth_token_secret'),
-                    'userId': cookie.load('userId')
+                    'userId': cookie.load('userId').replace('str', '')
                 }
             })
             .then(json => {
@@ -97,7 +97,7 @@ export function getLikeHashtags(){
                 headers: {
                     'oauth_token' : cookie.load('oauth_token'),
                     'oauth_token_secret' : cookie.load('oauth_token_secret'),
-                    'userId': cookie.load('userId')
+                    'userId': cookie.load('userId').replace('str', '')
                 }
             })
             .then(json => {
