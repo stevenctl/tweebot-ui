@@ -3,8 +3,11 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import { Provider } from 'react-redux'
 import configureStore from './store/bots';
-import cookie from 'react-cookie';
+import config from 'react-global-configuration';
 
+config.set({
+    API_HOST: "localhost:8080"
+});
 
 
 const store = configureStore();

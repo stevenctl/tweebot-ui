@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '../containers/Header';
 import Footer from './Footer';
 import Sidebar from '../containers/Sidebar';
+import config from 'react-global-configuration';
 
 
 class Layout extends React.Component {
@@ -30,7 +31,7 @@ class Layout extends React.Component {
 					<center>
 						<h1>Sign In</h1>
 						<br/>
-						<a href="http://localhost:8080/tweebot/connect/twitter"><img src="/login.png"/></a>
+						<a href={"http://" + config.get("API_HOST") +"/tweebot/connect/twitter"}><img src="/login.png"/></a>
 					</center>
 				</div>
 		);

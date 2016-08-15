@@ -1,24 +1,11 @@
 import cookie from 'react-cookie';
 import axios from 'axios';
 import RequestStatus from './RequestStatus';
+import config from 'react-global-configuration';
+
 
 export const USER_INFO_REQUEST = 'USER_INFO_REQUEST', USER_INFO_SUCCESS = 'USER_INFO_SUCCESS', USER_INFO_FAIL = 'USER_INFO_FAIL';
 export const LOGOUT = 'LOGOUT';
-
-
-export function addFollowHashtag(hashtag){
-    return {
-        type: ADD_FOLLOW_HASHTAG,
-        hashtag: {name: hashtag, number: 0}
-    };
-}
-
-export function removeFollowHashtag(hashtag){
-    return {
-        type: REMOVE_FOLLOW_HASHTAG,
-        hashtag
-    };
-}
 
 export function logout(){
     return {
@@ -40,7 +27,7 @@ export function getUserInfo() {
                     type: USER_INFO_SUCCESS,
                     status: status.success(),
 					userInfo: {
-								id: cookie.load('userId'),
+								id_str: cookie.load('userId'),
 								name: cookie.load('userFullName'),
 								screen_name: cookie.load('userScreenName'),
                                 profile_image_url: cookie.load('userProfilePic')
@@ -48,7 +35,7 @@ export function getUserInfo() {
 					});
 		}
 		
-        return axios.get('http://localhost:8080/tweebot/connect/twitter/userInfo',
+        return axios.get('http://' + config.get('API_HOST') + '/tweebot/connect/twitter/userInfo',
 			{
 				headers: {
 					'oauth_token' : cookie.load('oauth_token'),

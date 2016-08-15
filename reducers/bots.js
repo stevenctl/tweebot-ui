@@ -1,6 +1,5 @@
 import {USER_INFO_REQUEST, USER_INFO_SUCCESS, USER_INFO_FAIL,
-        LOGOUT,
-        ADD_FOLLOW_HASHTAG,REMOVE_FOLLOW_HASHTAG} from '../actions/actions';
+        LOGOUT} from '../actions/actions';
 
 import {ADD_LIKE_HASHTAG_REQUEST, ADD_LIKE_HASHTAG_SUCCESS, ADD_LIKE_HASHTAG_FAIL,
     REMOVE_LIKE_HASHTAG_REQUEST, REMOVE_LIKE_HASHTAG_SUCCESS, REMOVE_LIKE_HASHTAG_FAIL,
@@ -64,7 +63,7 @@ function handleAction(state, action){
 function userInfo(action, state){
     switch(action.type){
         case USER_INFO_SUCCESS:
-            cookie.save('userId', action.userInfo.id, { path: '/' });
+            cookie.save('userId', action.userInfo.id_str, { path: '/' });
             cookie.save('userFullName', action.userInfo.name, { path: '/' });
             cookie.save('userScreenName', action.userInfo.screen_name, { path: '/' });
             cookie.save('userProfilePic', action.userInfo.profile_image_url, {path: '/'});
