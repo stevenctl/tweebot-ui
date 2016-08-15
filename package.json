@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --hot"
+    "start": "webpack-dev-server --host 0.0.0.0 --port 80"
   },
   "author": "Steven Landow",
   "license": "ISC",
