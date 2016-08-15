@@ -61,7 +61,7 @@ export function removeRetweetHashtag(policyId){
                 headers: {
                     'oauth_token' : cookie.load('oauth_token'),
                     'oauth_token_secret' : cookie.load('oauth_token_secret'),
-                    'userId': cookie.load('userId')
+                    'userId': cookie.load('userId').replace('str', '')
                 }
             })
             .then(json => {
@@ -98,7 +98,7 @@ export function getRetweetHashtags(){
                 headers: {
                     'oauth_token' : cookie.load('oauth_token'),
                     'oauth_token_secret' : cookie.load('oauth_token_secret'),
-                    'userId': cookie.load('userId')
+                    'userId': cookie.load('userId').replace('str', '')
                 }
             })
             .then(json => {
