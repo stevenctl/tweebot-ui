@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --host 0.0.0.0 --port 80"
+    "start": "webpack-dev-server --host 0.0.0.0 --port 80",
+    "bundle": "webpack --config webpack.config.js --progress --colors --optimize-occurrence-order --optimize-dedupe"
   },
   "author": "Steven Landow",
   "license": "ISC",

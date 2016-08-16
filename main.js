@@ -5,6 +5,13 @@ import { Provider } from 'react-redux'
 import configureStore from './store/bots';
 import config from 'react-global-configuration';
 
+if (!String.prototype.includes) {
+    String.prototype.includes = function() {
+        'use strict';
+        return String.prototype.indexOf.apply(this, arguments) !== -1;
+    };
+}
+
 config.set({
     API_HOST: "tweebot.co:8080"
 });
