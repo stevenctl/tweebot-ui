@@ -19,6 +19,17 @@ export function logout(){
 export function getUserInfo() {
     let status = new RequestStatus();
 
+
+    //if the userId cookie is in bad form, get rid of it
+    if(cookie.load('userId')) {
+        if (!(typeof cookie.load('userId') == 'string')) {
+            Object.keys(cookie.select(/^user.*/i)).forEach(name => cookie.remove(name, {path: '/'}));
+            Object.keys(cookie.select(/^oauth.*/i)).forEach(name => cookie.remove(name, {path: '/'}));
+        }
+        this.props.doGetUserInfo();
+    }
+
+
     return dispatch => {
         dispatch({
             type: USER_INFO_REQUEST,
@@ -29,7 +40,7 @@ export function getUserInfo() {
             dispatch(getLikeHashtags());
             dispatch(getFollowHashtags());
             dispatch(getRetweetHashtags());
-            
+
 			return dispatch({
                     type: USER_INFO_SUCCESS,
                     status: status.success(),

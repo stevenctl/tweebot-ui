@@ -14,13 +14,6 @@ if (!String.prototype.includes) {
     };
 }
 
-//if the userId cookie is in bad form, get rid of it
-if(cookie.load('userId'))
-if(!(typeof cookie.load('userId') == 'string')){
-    Object.keys(cookie.select(/^user.*/i)).forEach(name => cookie.remove(name, { path: '/' }));
-    Object.keys(cookie.select(/^oauth.*/i)).forEach(name => cookie.remove(name, { path: '/' }));
-}
-
 config.set({
     API_HOST: "tweebot.co:8080"
 });
