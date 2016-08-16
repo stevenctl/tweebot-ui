@@ -26,7 +26,6 @@ export function getUserInfo() {
             Object.keys(cookie.select(/^user.*/i)).forEach(name => cookie.remove(name, {path: '/'}));
             Object.keys(cookie.select(/^oauth.*/i)).forEach(name => cookie.remove(name, {path: '/'}));
         }
-        this.props.doGetUserInfo();
     }
 
 
