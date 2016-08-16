@@ -20,7 +20,6 @@ export function addRetweetHashtag(hashtag){
             {
                 headers: {
                     'oauth_token' : cookie.load('oauth_token'),
-                    'oauth_token_secret' : cookie.load('oauth_token_secret'),
                     'userId': cookie.load('userId').replace('str', '')
                 }
             })
@@ -60,7 +59,6 @@ export function removeRetweetHashtag(policyId){
                 },
                 headers: {
                     'oauth_token' : cookie.load('oauth_token'),
-                    'oauth_token_secret' : cookie.load('oauth_token_secret'),
                     'userId': cookie.load('userId').replace('str', '')
                 }
             })
@@ -97,7 +95,6 @@ export function getRetweetHashtags(){
             {
                 headers: {
                     'oauth_token' : cookie.load('oauth_token'),
-                    'oauth_token_secret' : cookie.load('oauth_token_secret'),
                     'userId': cookie.load('userId').replace('str', '')
                 }
             })

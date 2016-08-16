@@ -4,12 +4,18 @@ import HashtagList from './HashtagList';
 export default class LikeList extends React.Component{
 
     componentWillMount(){
-        this.props.doGetLikeHashtags();
+
     }
 
     render(){
         let heartIcon = <i className="glyphicon glyphicon-heart"/>;
-        let heading = <div>{heartIcon} Like</div>;
+        let heading = <div>{heartIcon} Like
+                        <span className="pull-right">
+                            <a onClick={this.props.doGetLikeHashtags}>
+                                <i className="glyphicon glyphicon-refresh"/>
+                            </a>
+                        </span>
+                    </div>;
         let itemArray = this.props.likeHashtags.map((item) => {
             return {
                 name: item.hashtag,

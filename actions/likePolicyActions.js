@@ -20,7 +20,6 @@ export function addLikeHashtag(hashtag){
             {
                 headers: {
                     'oauth_token' : cookie.load('oauth_token'),
-                    'oauth_token_secret' : cookie.load('oauth_token_secret'),
                     'userId': cookie.load('userId').replace('str', '')
                 }
             })
@@ -60,7 +59,6 @@ export function removeLikeHashtag(policyId){
                 },
                 headers: {
                     'oauth_token' : cookie.load('oauth_token'),
-                    'oauth_token_secret' : cookie.load('oauth_token_secret'),
                     'userId': cookie.load('userId').replace('str', '')
                 }
             })
@@ -92,12 +90,11 @@ export function getLikeHashtags(){
             type: GET_LIKE_HASHTAGS_REQUEST,
             status: status.copy()
         });
-
+        
         return axios.get('http://' + config.get('API_HOST') + '/tweebot/policies/like',
             {
                 headers: {
                     'oauth_token' : cookie.load('oauth_token'),
-                    'oauth_token_secret' : cookie.load('oauth_token_secret'),
                     'userId': cookie.load('userId').replace('str', '')
                 }
             })

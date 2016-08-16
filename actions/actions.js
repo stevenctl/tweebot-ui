@@ -2,6 +2,9 @@ import cookie from 'react-cookie';
 import axios from 'axios';
 import RequestStatus from './RequestStatus';
 import config from 'react-global-configuration';
+import {getFollowHashtags} from './followPolicyActions';
+import {getRetweetHashtags} from './retweetPolicyActions';
+import {getLikeHashtags} from './likePolicyActions';
 
 
 export const USER_INFO_REQUEST = 'USER_INFO_REQUEST', USER_INFO_SUCCESS = 'USER_INFO_SUCCESS', USER_INFO_FAIL = 'USER_INFO_FAIL';
@@ -23,6 +26,10 @@ export function getUserInfo() {
         });
 		
 		if(cookie.load('userId') && cookie.load('userProfilePic') && cookie.load('userFullName') && cookie.load('userScreenName')){
+            dispatch(getLikeHashtags());
+            dispatch(getFollowHashtags());
+            dispatch(getRetweetHashtags());
+            
 			return dispatch({
                     type: USER_INFO_SUCCESS,
                     status: status.success(),
@@ -48,7 +55,12 @@ export function getUserInfo() {
                     type: USER_INFO_SUCCESS,
                     status: status.success(),
 					userInfo: json.data
-                })
+                });
+
+                dispatch(getLikeHashtags());
+                dispatch(getFollowHashtags());
+                dispatch(getRetweetHashtags());
+
             })
             .catch(e => {
                 let errMsg = "Failed to get user info";

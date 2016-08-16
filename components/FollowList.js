@@ -4,12 +4,18 @@ import HashtagList from './HashtagList';
 export default class FollowList extends React.Component{
 
     componentWillMount(){
-        this.props.doGetFollowHashtags();
+
     }
 
     render(){
         let heartIcon = <i className="glyphicon glyphicon-heart"/>;
-        let heading = <div>{heartIcon} Follow</div>;
+        let heading = <div>{heartIcon} Follow
+                         <span className="pull-right">
+                            <a onClick={this.props.doGetFollowHashtags}>
+                                <i className="glyphicon glyphicon-refresh"/>
+                            </a>
+                         </span>
+                        </div>;
         let itemArray = this.props.followHashtags.map((item) => {
             return {
                 name: item.hashtag,
