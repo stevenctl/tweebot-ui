@@ -27,7 +27,7 @@ class Landing extends React.Component{
 			<div className="panel" style={{marginTop: '20px'}}>
 				 <div className="panel-block" style={{padding: '20px'}}>
 						<center>
-							<h2 >Welcome to tBot</h2>
+							<h2 >Welcome to tweebot</h2>
 							<Link to="tutorial1"><button className="btn btn-default">Next</button></Link>
 						</center>
 					</div>

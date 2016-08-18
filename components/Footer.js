@@ -16,7 +16,7 @@ class Footer extends React.Component {
 						<ul className="list-inline">
 							<li>©2016 Sugarware. All Rights Reserved.</li>&nbsp;|&nbsp;
 							<li><a href="#" target="_new">Privacy Policy</a></li>&nbsp;|&nbsp;
-							<li><a href="#" target="_new">About tBot</a></li>&nbsp;|&nbsp;
+							<li><a href="#" target="_new">About tweebot</a></li>&nbsp;|&nbsp;
 							<li><a href="#" target="_new">Terms of Use</a></li>&nbsp;|&nbsp;
 							<li><a href="#">Release Notes</a></li>&nbsp;|&nbsp;
 							<li><a href="#">Feedback</a></li>&nbsp;|&nbsp;

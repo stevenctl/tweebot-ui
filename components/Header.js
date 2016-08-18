@@ -17,7 +17,7 @@ class Header extends React.Component{
 			   <div className="container-fluid">
 				  {/*Brand and toggle get grouped for better mobile display */}
 				  <div className="navbar-header">
-					 <a className="navbar-brand" href="/">tBot</a>
+					 <a className="navbar-brand" href="/">tweebot</a>
 					 {/*
 					 <ul className="navbar-service dropdown">
 						<a href="#" role="button">Menu</a>
