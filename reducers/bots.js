@@ -1,4 +1,7 @@
 import {USER_INFO_REQUEST, USER_INFO_SUCCESS, USER_INFO_FAIL,
+        GET_GEO_REQUEST, GET_GEO_SUCCESS, GET_GEO_FAIL,
+        PUT_GEO_REQUEST, PUT_GEO_SUCCESS, PUT_GEO_FAIL,
+         POST_GEO_REQUEST, POST_GEO_SUCCESS, POST_GEO_FAIL,
         LOGOUT} from '../actions/actions';
 
 import {ADD_LIKE_HASHTAG_REQUEST, ADD_LIKE_HASHTAG_SUCCESS, ADD_LIKE_HASHTAG_FAIL,
@@ -42,6 +45,8 @@ function handleAction(state, action){
         return followHashtag(action, state);
     }else if(action.type.includes("USER_INFO")){
         return userInfo(action, state);
+    }else if(action.type.includes("_GEO_")){
+        return geoPolicy(action, state);
     }
 
 	switch(action.type){
@@ -226,6 +231,51 @@ function followHashtag(action, state){
 
     }
     return state;
+}
+
+function geoPolicy(action, state) {
+    switch(action.type){
+        case GET_GEO_REQUEST:
+            return Object.assign({}, state, {
+                getGeoStatus: action.status
+            });
+        case GET_GEO_SUCCESS:
+            return Object.assign({}, state, {
+                getGeoStatus: action.status,
+                geoPolicy: action.geoPolicy
+            });
+        case GET_GEO_FAIL:
+            return Object.assign({}, state, {
+                getGeoStatus: action.status
+            });
+
+        case PUT_GEO_REQUEST:
+            return Object.assign({}, state, {
+                putGeoStatus: action.status
+            });
+        case PUT_GEO_SUCCESS:
+            return Object.assign({}, state, {
+                putGeoStatus: action.status
+            });
+        case PUT_GEO_FAIL:
+            return Object.assign({}, state, {
+                putGeoStatus: action.status
+            });
+
+        case POST_GEO_REQUEST:
+            return Object.assign({}, state, {
+                postGeoStatus: action.status
+            });
+        case POST_GEO_SUCCESS:
+            return Object.assign({}, state, {
+                postGeoStatus: action.status
+            });
+        case POST_GEO_FAIL:
+            return Object.assign({}, state, {
+                postGeoStatus: action.status
+            });
+
+    }
 }
 
 module.exports = {handleAction};

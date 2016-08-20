@@ -12,7 +12,7 @@ export default class HashtagList extends React.Component{
                 <div className="panel-heading">
                     {this.props.heading}
                 </div>
-                <div className="panel-body list-group">
+                <div className="panel-body list-group" style={{minHeight: '160px', maxHeight: '320px', overflow: 'hidden',overflowY: 'scroll'}} >
 
                         {this.props.hashtags.map((item, i) => {
                                 return <HashtagListItem item={item} glyphicon={this.props.glyphicon} onDeleteHandler={this.props.deleteHandler} key={i}/>;

@@ -5,6 +5,7 @@ import {Link} from 'react-router';
 import LikeList from '../containers/LikeList';
 import RetweetList from '../containers/RetweetList';
 import FollowList from '../containers/FollowList';
+import GeoSettings from '../containers/GeoSettings';
 
 class Landing extends React.Component{
 	
@@ -49,6 +50,10 @@ class Landing extends React.Component{
                 <div className="row">
                     <div className="col-md-4 col-md-offset-1">
                         <FollowList />
+                    </div>
+
+                    <div className="col-md-4 col-md-offset-1">
+                        <GeoSettings />
                     </div>
                 </div>
 			</div>
