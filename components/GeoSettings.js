@@ -38,9 +38,7 @@ export default class GeoSettings extends React.Component{
     }
 
     render(){
-        if(!this.props.getGeoStatus){
-            this.props.doGetGeoPolicy();
-        }
+       
 
         return(
             <div className="panel panel-default" >

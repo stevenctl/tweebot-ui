@@ -74,6 +74,7 @@ export function getUserInfo() {
                 dispatch(getLikeHashtags());
                 dispatch(getFollowHashtags());
                 dispatch(getRetweetHashtags());
+                dispatch(getGeoPolicy());
 
             })
             .catch(e => {
