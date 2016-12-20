@@ -15,7 +15,7 @@ if (!String.prototype.includes) {
 }
 
 config.set({
-    API_HOST: "localhost:8080"
+    API_HOST: "tweebot.co:8080"
 });
 
 
