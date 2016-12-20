@@ -11,6 +11,7 @@ export const USER_INFO_REQUEST = 'USER_INFO_REQUEST', USER_INFO_SUCCESS = 'USER_
 export const GET_GEO_REQUEST = 'GET_GEO_REQUEST', GET_GEO_SUCCESS = 'GET_GEO_SUCCESS', GET_GEO_FAIL = 'GET_GEO_FAIL';
 export const PUT_GEO_REQUEST = 'PUT_GEO_REQUEST', PUT_GEO_SUCCESS = 'PUT_GEO_SUCCESS', PUT_GEO_FAIL = 'PUT_GEO_FAIL';
 export const POST_GEO_REQUEST = 'POST_GEO_REQUEST', POST_GEO_SUCCESS = 'POST_GEO_SUCCESS', POST_GEO_FAIL = 'POST_GEO_FAIL';
+export const GET_SUB_REQUEST = 'GET_SUB_REQUEST', GET_SUB_SUCCESS = 'GET_SUB_SUCCESS', GET_SUB_FAIL = 'GET_SUB_FAIL';
 
 export const LOGOUT = 'LOGOUT';
 
@@ -18,6 +19,42 @@ export function logout(){
     return {
         type: LOGOUT
     };
+}
+
+export function getSubscription(){
+	
+	let status = new RequestStatus();
+console.log('subususdf')
+    return dispatch => {
+        dispatch({
+            type: GET_SUB_REQUEST,
+            status: status.copy()
+        });
+
+        return axios.get('http://' + config.get('API_HOST') + '/tweebot/connect/twitter/subInfo',
+            {
+                headers: {
+                    'userId': cookie.load('userId').replace('str', '')
+                }
+            })
+            .then(json => {
+                console.log(JSON.stringify(json));
+                dispatch({
+                    type: GET_SUB_SUCCESS,
+                    status: status.success(),
+                    subData: json.data
+                })
+            })
+            .catch(e => {
+                let errMsg = e;
+                console.error(errMsg);
+                dispatch({
+                    type: GET_SUB_FAIL,
+                    status: status.error(errMsg)
+                })
+            })
+    }
+	
 }
 
 export function getUserInfo() {

@@ -15,6 +15,8 @@ import {ADD_RETWEET_HASHTAG_REQUEST, ADD_RETWEET_HASHTAG_SUCCESS, ADD_RETWEET_HA
 import {ADD_FOLLOW_HASHTAG_REQUEST, ADD_FOLLOW_HASHTAG_SUCCESS, ADD_FOLLOW_HASHTAG_FAIL,
     REMOVE_FOLLOW_HASHTAG_REQUEST, REMOVE_FOLLOW_HASHTAG_SUCCESS, REMOVE_FOLLOW_HASHTAG_FAIL,
     GET_FOLLOW_HASHTAGS_REQUEST, GET_FOLLOW_HASHTAGS_SUCCESS, GET_FOLLOW_HASHTAGS_FAIL} from '../actions/followPolicyActions';
+	
+import {GET_SUB_REQUEST, GET_SUB_SUCCESS, GET_SUB_FAIL} from '../actions/actions';
 
 import cookie from 'react-cookie';
 import { browserHistory } from 'react-router';
@@ -47,7 +49,9 @@ function handleAction(state, action){
         return userInfo(action, state);
     }else if(action.type.includes("_GEO_")){
         return geoPolicy(action, state);
-    }
+    }else if (action.type.includes("_SUB_")){
+		return subscription(action, state);
+	}
 
 	switch(action.type){
         case LOGOUT:
@@ -276,6 +280,26 @@ function geoPolicy(action, state) {
             });
 
     }
+}
+
+function subscription(action, state){
+	switch(action.type){
+        case GET_SUB_REQUEST:
+            return Object.assign({}, state, {
+                getSubStatus: action.status
+            });
+        case GET_SUB_SUCCESS:
+            return Object.assign({}, state, {
+                getSubStatus: action.status,
+                subscription: action.subData.tier
+            });
+        case GET_SUB_FAIL:
+            return Object.assign({}, state, {
+                getSubStatus: action.status
+            });
+		default:
+			return Object.assign({}, state);
+	}
 }
 
 module.exports = {handleAction};

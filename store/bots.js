@@ -8,10 +8,16 @@ import { hashHistory } from 'react-router';
 const middlewareR= routerMiddleware(hashHistory)
 
 export default function configureStore(initialState) {
-    const store = createStore(
+    
+	const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+	
+	const store = createStore(
         bots.handleAction,
         initialState,
-        compose(applyMiddleware(thunkMiddleware,middlewareR, createLogger())));
+        composeEnhancers(
+				applyMiddleware(thunkMiddleware,middlewareR, createLogger())
+			)
+	);
 
     return store;
 }

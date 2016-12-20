@@ -6,6 +6,8 @@ import LikeList from '../containers/LikeList';
 import RetweetList from '../containers/RetweetList';
 import FollowList from '../containers/FollowList';
 import GeoSettings from '../containers/GeoSettings';
+import Checkout from './Checkout';
+import ProNotification from '../containers/ProNotification';
 
 class Landing extends React.Component{
 	
@@ -15,8 +17,6 @@ class Landing extends React.Component{
 		
 		
 	}
-	
-	
 	
 	render(){
 		
@@ -38,12 +38,15 @@ class Landing extends React.Component{
 		
 		return (
 			<div className="panel container" style={{marginTop: '20px', padding: '20px'}}>
-                <div className="row">
+               
+				<ProNotification/>
+				
+				<div className="row">
                     <div className="col-md-4 col-md-offset-1">
                         <LikeList />
                     </div>
 
-                    <div className="col-md-4 col-md-offset-1">
+                    <div className="col-md-4 col-md-offset-2">
                         <RetweetList />
                     </div>
                 </div>
@@ -52,7 +55,7 @@ class Landing extends React.Component{
                         <FollowList />
                     </div>
 
-                    <div className="col-md-4 col-md-offset-1">
+                    <div className="col-md-4 col-md-offset-2">
                         <GeoSettings />
                     </div>
                 </div>
